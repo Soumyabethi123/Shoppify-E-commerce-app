@@ -19,6 +19,7 @@ class MainActivity2 : AppCompatActivity() {
 
     lateinit var account : LinearLayout
     lateinit var cat : LinearLayout
+    private var flag=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +31,7 @@ class MainActivity2 : AppCompatActivity() {
 
         val myDataset = Category().loadAffirmations()
 
-        recycle1.adapter = Adapter1(this,myDataset)
+        recycle1.adapter = Adapter1(this,myDataset,flag)
         recycle1.setHasFixedSize(true)
         recycle1.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
 

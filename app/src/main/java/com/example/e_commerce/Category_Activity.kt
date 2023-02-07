@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 class Category_Activity : AppCompatActivity() {
 
     lateinit var recycle : RecyclerView
+    private var flag=1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
@@ -16,7 +18,8 @@ class Category_Activity : AppCompatActivity() {
 
         val myDataset = Category().loadAffirmations()
 
-        recycle.adapter = Adapter1(this,myDataset)
+
+        recycle.adapter = Adapter1(this,myDataset,flag)
         recycle.setHasFixedSize(true)
         recycle.layoutManager = LinearLayoutManager(this)
 
