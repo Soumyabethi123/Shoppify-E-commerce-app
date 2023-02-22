@@ -1,17 +1,20 @@
 package com.example.e_commerce
 
+
 import android.content.Context
-import android.provider.ContactsContract.CommonDataKinds.Im
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class Adapter1(context: Context,private val dataset: List<Category_attributes>,val flag :Int) : RecyclerView.Adapter<Adapter1.ViewHolder>() {
+
+class Adapter1(
+    val context: Context, private val dataset: List<Category_attributes>, val flag:Int
+    , private val clickListener: MainActivity2 , private val clickListener2 : Category_Activity
+) : RecyclerView.Adapter<Adapter1.ViewHolder>() {
 
     class ViewHolder(itemView : View,flag1: Int) : RecyclerView.ViewHolder(itemView){
 
@@ -46,13 +49,24 @@ class Adapter1(context: Context,private val dataset: List<Category_attributes>,v
             holder.category_name1.text=current.name
 
             holder.category_img1.setImageResource(current.Image_id)
+
+            holder.itemView.setOnClickListener{
+
+                clickListener.onClick()
+            }
         }
         else{
 
             holder.cat_name2.text=current.name
             holder.cat_img2.setImageResource(current.Image_id)
             holder.cat_desc.text = current.desc
+
+            holder.itemView.setOnClickListener{
+
+                clickListener2.onClick2(holder.cat_name2.text.toString())
+            }
         }
+
 
     }
 
@@ -63,7 +77,3 @@ class Adapter1(context: Context,private val dataset: List<Category_attributes>,v
 
 }
 
-fun set_view(){
-
-
-}

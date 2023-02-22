@@ -3,10 +3,8 @@ package com.example.e_commerce
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.recyclerview.widget.GridLayoutManager
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -31,7 +29,7 @@ class MainActivity2 : AppCompatActivity() {
 
         val myDataset = Category().loadAffirmations()
 
-        recycle1.adapter = Adapter1(this,myDataset,flag)
+        recycle1.adapter = Adapter1(this,myDataset,flag,this,Category_Activity())
         recycle1.setHasFixedSize(true)
         recycle1.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
 
@@ -55,5 +53,10 @@ class MainActivity2 : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    fun onClick(){
+
+        Toast.makeText(this,"this is toast message",Toast.LENGTH_SHORT).show()
     }
 }

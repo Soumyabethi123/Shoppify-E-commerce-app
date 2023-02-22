@@ -2,10 +2,9 @@ package com.example.e_commerce
 
 import androidx.annotation.DrawableRes
 
-data class Category_attributes(
+data class Product_list(
 
-    val name : String,
     @DrawableRes val Image_id : Int,
-    val desc : String
-
+    val desc : String,
+    val price : Int
 )

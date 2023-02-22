@@ -1,7 +1,9 @@
 package com.example.e_commerce
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -19,9 +21,20 @@ class Category_Activity : AppCompatActivity() {
         val myDataset = Category().loadAffirmations()
 
 
-        recycle.adapter = Adapter1(this,myDataset,flag)
+        recycle.adapter = Adapter1(this,myDataset,flag, MainActivity2(),this)
         recycle.setHasFixedSize(true)
         recycle.layoutManager = LinearLayoutManager(this)
 
     }
+
+    fun onClick2(type : String){
+
+        val intent = Intent(this,Product_list_activity::class.java)
+
+        intent.putExtra(Product_list_activity.type,type)
+
+        startActivity(intent)
+
+    }
+
 }
