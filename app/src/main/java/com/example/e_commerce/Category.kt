@@ -38,4 +38,16 @@ class Category() {
             Product_list(R.drawable.kurti5,"Floral Print A-line dress",800)
         )
     }
+
+    fun loadSaree() : List<Product_list>{
+
+        return listOf<Product_list>(
+
+            Product_list(R.drawable.saree1,"Printed Shirt dress",800) ,
+            Product_list(R.drawable.saree2,"Printed Shirt dress",800) ,
+            Product_list(R.drawable.saree3,"Printed Shirt dress",800) ,
+            Product_list(R.drawable.saree5,"Printed Shirt dress",800) ,
+            Product_list(R.drawable.recent3,"Printed Shirt dress",800)
+        )
+    }
 }

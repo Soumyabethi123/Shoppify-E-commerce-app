@@ -8,6 +8,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.io.Serializable
 
 class Product_list_activity : AppCompatActivity() {
 
@@ -15,13 +19,15 @@ class Product_list_activity : AppCompatActivity() {
         const val type = "prdt"
     }
 
+    lateinit var prdt_type : String
+
     private lateinit var recycle : RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_list)
 
-        val prdt_type = intent.getStringExtra(type).toString()
+        prdt_type = intent.getStringExtra(type).toString()
 
         recycle = findViewById(R.id.product_list_view)
 
@@ -33,7 +39,7 @@ class Product_list_activity : AppCompatActivity() {
          if(type=="Men"){
 
              val mydata = Category().loadMen()
-             recycle.adapter=Product_adapter(mydata)
+             recycle.adapter=Product_adapter(mydata,this)
              recycle.setHasFixedSize(true)
              recycle.layoutManager = GridLayoutManager(this,2)
 
@@ -42,9 +48,25 @@ class Product_list_activity : AppCompatActivity() {
 
              val mydata = Category().loadKurti()
 
-             recycle.adapter=Product_adapter(mydata)
+             recycle.adapter=Product_adapter(mydata,this)
              recycle.setHasFixedSize(true)
-             recycle.layoutManager = LinearLayoutManager(this)
+             recycle.layoutManager = GridLayoutManager(this,2)
          }
+        else if(type=="Saree"){
+
+             val mydata = Category().loadSaree()
+
+             recycle.adapter=Product_adapter(mydata,this)
+             recycle.setHasFixedSize(true)
+             recycle.layoutManager = GridLayoutManager(this,2)
+         }
+    }
+
+    fun onClick(position : Int){
+
+        val intent = Intent(this,Product_detail::class.java)
+        intent.putExtra("key", prdt_type)
+        intent.putExtra("intVariableName", position);
+        startActivity(intent)
     }
 }

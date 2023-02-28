@@ -55,8 +55,10 @@ class MainActivity2 : AppCompatActivity() {
 
     }
 
-    fun onClick(){
+    fun onClick(type : String){
 
-        Toast.makeText(this,"this is toast message",Toast.LENGTH_SHORT).show()
+        val intent = Intent(this,Product_list_activity::class.java)
+        intent.putExtra(Product_list_activity.type,type)
+        startActivity(intent)
     }
 }

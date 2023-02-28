@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class Product_adapter(private val dataset: List<Product_list>) : RecyclerView.Adapter<Product_adapter.ViewHolder>() {
+class Product_adapter(private val dataset: List<Product_list> , private val clickListener2 : Product_list_activity) : RecyclerView.Adapter<Product_adapter.ViewHolder>() {
 
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
@@ -35,6 +35,11 @@ class Product_adapter(private val dataset: List<Product_list>) : RecyclerView.Ad
         holder.prdt_img.setImageResource(current.Image_id)
         holder.prdt_desc.text = current.desc
         holder.price.text= current.price.toString()
+
+        holder.itemView.setOnClickListener{
+
+            clickListener2.onClick(position)
+        }
 
     }
 

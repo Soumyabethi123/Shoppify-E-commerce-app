@@ -52,7 +52,7 @@ class Adapter1(
 
             holder.itemView.setOnClickListener{
 
-                clickListener.onClick()
+                clickListener.onClick(current.name.toString())
             }
         }
         else{
